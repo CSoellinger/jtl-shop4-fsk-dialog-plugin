@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<jtlshop3plugin>
+    <Name>FSK Landing Warning</Name>
+    <Description>FSK landing warning plugin to view a warning as a landing page or as a dialog to the user that content is not for people younger than X.</Description>
+    <Author>Christopher Söllinger</Author>
+    <URL>https://www.pixelcrab.at</URL>
+    <PluginID>pixelcrab_fsk_landing_warning</PluginID>
+    <XMLVersion>100</XMLVersion>
+    <Shop4Version>400</Shop4Version>
+    <Icon>preview.png</Icon>
+    <Install>
+        <Version nr="100">
+            <CreateDate>2016-04-21</CreateDate>
+        </Version>
+        <Hooks>
+            <Hook id="132">132_index_navi_head_postget.php</Hook>
+            <Hook id="140">140_smarty_outputfilter.php</Hook>
+        </Hooks>
+        <Locales>
+            <Variable>
+                <VariableLocalized iso="GER">Zutritt nur ab {MIN_AGE} Jahren.</VariableLocalized>
+                <VariableLocalized iso="ENG">Permissible from the age of {MIN_AGE}.</VariableLocalized>
+                <Description>FSK Headline. Marker {MIN_AGE} wird ersetzt.</Description>
+                <Name>xmlp_lang_pc_fsk_headline</Name>
+            </Variable>
+            <Variable>
+                <VariableLocalized iso="GER">Der Inhalt auf dieser Seite ist nicht geeignet wenn du jünger bist. Bitte bestätige dass du über {MIN_AGE} Jahre alt bist.</VariableLocalized>
+                <VariableLocalized iso="ENG">The content of this page is not for younger people. Please accept that you are at least {MIN_AGE} years old.</VariableLocalized>
+                <Description>FSK custom text. Marker {MIN_AGE} wird ersetzt.</Description>
+                <Name>xmlp_lang_pc_fsk_text</Name>
+            </Variable>
+            <Variable>
+                <VariableLocalized iso="GER">Bitte geben Sie ihr Geburtsdatum ein (Tag/Monat/Jahr)</VariableLocalized>
+                <VariableLocalized iso="ENG">Please tell us your birthdate (Day/Month/Year)</VariableLocalized>
+                <Description>Label für Gebursdatum Eingabe.</Description>
+                <Name>xmlp_lang_pc_fsk_label_birthdate</Name>
+            </Variable>
+            <Variable>
+                <VariableLocalized iso="GER">TT</VariableLocalized>
+                <VariableLocalized iso="ENG">DD</VariableLocalized>
+                <Description>Platzhalter für Tag Eingabe.</Description>
+                <Name>xmlp_lang_pc_fsk_placeholder_day</Name>
+            </Variable>
+            <Variable>
+                <VariableLocalized iso="GER">MM</VariableLocalized>
+                <VariableLocalized iso="ENG">MM</VariableLocalized>
+                <Description>Platzhalter für Monat Eingabe.</Description>
+                <Name>xmlp_lang_pc_fsk_placeholder_month</Name>
+            </Variable>
+            <Variable>
+                <VariableLocalized iso="GER">JJJJ</VariableLocalized>
+                <VariableLocalized iso="ENG">YYYY</VariableLocalized>
+                <Description>Platzhalter für Jahr Eingabe.</Description>
+                <Name>xmlp_lang_pc_fsk_placeholder_year</Name>
+            </Variable>
+            <Variable>
+                <VariableLocalized iso="GER">Ich bin über {MIN_AGE}</VariableLocalized>
+                <VariableLocalized iso="ENG">Yes i\'m at least {MIN_AGE}</VariableLocalized>
+                <Description>Button FSK akzeptieren. Marker {MIN_AGE} wird ersetzt.</Description>
+                <Name>xmlp_lang_pc_fsk_btn_accept</Name>
+            </Variable>
+            <Variable>
+                <VariableLocalized iso="GER">und akzeptiere die AGB</VariableLocalized>
+                <VariableLocalized iso="ENG">and accept the AGB</VariableLocalized>
+                <Description>Falls AGB ausgeben werden, wird der Text zusätzlich zu xmlp_lang_pc_fsk_btn_accept angezeigt</Description>
+                <Name>xmlp_lang_pc_fsk_btn_accept_agb</Name>
+            </Variable>
+            <Variable>
+                <VariableLocalized iso="GER">SEITE VERLASSEN !</VariableLocalized>
+                <VariableLocalized iso="ENG">LEAVE PAGE !</VariableLocalized>
+                <Description>Button FSK ablehnen. Marker {MIN_AGE} wird ersetzt.</Description>
+                <Name>xmlp_lang_pc_fsk_btn_decline</Name>
+            </Variable>
+        </Locales>
+        <Adminmenu>
+            <Settingslink sort="1">
+                <Name>Einstellungen</Name>
+                <!-- === -->
+                <!-- Common settings -->
+                <!-- === -->
+                <Setting type="text" initialValue="" sort="10" conf="N">
+                    <Name>Allgemein</Name>
+                    <ValueName>Spacer</ValueName>
+                    <Description></Description>
+                </Setting>
+                <!-- pixelcrab_fsk_min_age: Minimum age for visitors -->
+                <Setting type="text" initialValue="18" sort="11" conf="Y">
+                    <Name>Mindest Alter</Name>
+                    <Description>Ganzzahl</Description>
+                    <ValueName>pixelcrab_fsk_min_age</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_insert_meta: Insert meta tag into head -->
+                <Setting type="checkbox" initialValue="on" sort="11" conf="Y">
+                    <Name>Meta Tag einfügen</Name>
+                    <Description>Fügt in den Head Bereich einen meta tag ein.</Description>
+                    <ValueName>pixelcrab_fsk_insert_meta</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_header_max_age: Send max age header -->
+                <Setting type="checkbox" initialValue="on" sort="21" conf="Y">
+                    <Name>Send header x-max-age</Name>
+                    <Description></Description>
+                    <ValueName>pixelcrab_fsk_header_max_age</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_header_age_hash: Send age hash header -->
+                <Setting type="checkbox" initialValue="on" sort="22" conf="Y">
+                    <Name>Send header x-age-hash</Name>
+                    <Description></Description>
+                    <ValueName>pixelcrab_fsk_header_age_hash</ValueName>
+                </Setting>
+            </Settingslink>
+            <Settingslink sort="2">
+                <Name>Landing settings</Name>
+                <!-- === -->
+                <!-- Common landing settings -->
+                <!-- === -->
+                <Setting type="text" initialValue="" sort="10" conf="N">
+                    <Name>Allgemein</Name>
+                    <ValueName>Spacer</ValueName>
+                    <Description></Description>
+                </Setting>
+                <!-- pixelcrab_fsk_text: Show an information text inside the dialog -->
+                <Setting type="selectbox" initialValue="1" sort="11" conf="Y">
+                    <Name>Text</Name>
+                    <Description>Text der angezeigt werden soll.</Description>
+                    <ValueName>pixelcrab_fsk_text</ValueName>
+                    <SelectboxOptions>
+                        <Option value="0" sort="1">Kein Text</Option>
+                        <Option value="1" sort="2">AGB</Option>
+                        <Option value="2" sort="3">Sprachvariable verwenden</Option>
+                    </SelectboxOptions>
+                </Setting>
+                <!-- pixelcrab_fsk_check_birthdate: Check birthdate before user can confirm -->
+                <Setting type="checkbox" initialValue="on" sort="12" conf="Y">
+                    <Name>Geburtsdatum überprüfen</Name>
+                    <Description>Der Benutzer muss sein Geburtsdatum eingeben bevor er fortfahren kann.</Description>
+                    <ValueName>pixelcrab_fsk_check_birthdate</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_decline_url: If user decline redirect to this page -->
+                <Setting type="text" initialValue="https://duckduckgo.com" sort="13" conf="Y">
+                    <Name>Ablehnen URL</Name>
+                    <Description>URL wenn der Benutzer nicht akzeptiert. Vollständige URL mit http:\/\/</Description>
+                    <ValueName>pixelcrab_fsk_decline_url</ValueName>
+                </Setting>
+                <!-- === -->
+                <!-- Landing page settings -->
+                <!-- === -->
+                <Setting type="text" initialValue="" sort="20" conf="N">
+                    <Name>Landing Page</Name>
+                    <ValueName>Spacer</ValueName>
+                    <Description></Description>
+                </Setting>
+                <!-- pixelcrab_fsk_show_page: Show landing page to confirm fsk -->
+                <Setting type="checkbox" initialValue="" sort="21" conf="Y">
+                    <Name>Anzeigen</Name>
+                    <Description>Zeige eine eigene Startseite wo der Benutzer zuerst akzeptieren muss.</Description>
+                    <ValueName>pixelcrab_fsk_show_landing_page</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_hide_page_header: Hide page header on the landing page -->
+                <Setting type="checkbox" initialValue="" sort="22" conf="Y">
+                    <Name>Seiten Header ausblenden</Name>
+                    <Description>Header auf Landing Page ausblenden.</Description>
+                    <ValueName>pixelcrab_fsk_hide_page_header</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_hide_page_nav: Hide nav on the landing page -->
+                <Setting type="checkbox" initialValue="" sort="23" conf="Y">
+                    <Name>Nav ausblenden</Name>
+                    <Description>Nav auf Landing Page ausblenden.</Description>
+                    <ValueName>pixelcrab_fsk_hide_page_nav</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_hide_page_aside: Hide aside on the landing page -->
+                <Setting type="checkbox" initialValue="" sort="23" conf="Y">
+                    <Name>Sidebar ausblenden</Name>
+                    <Description>Aside auf Landing Page ausblenden.</Description>
+                    <ValueName>pixelcrab_fsk_hide_page_aside</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_hide_page_footer: Hide page footer on the landing page -->
+                <Setting type="checkbox" initialValue="" sort="24" conf="Y">
+                    <Name>Seiten Footer ausblenden</Name>
+                    <Description>Footer auf Landing Page ausblenden.</Description>
+                    <ValueName>pixelcrab_fsk_hide_page_footer</ValueName>
+                </Setting>
+                <!-- === -->
+                <!-- Landing dialog settings -->
+                <!-- === -->
+                <Setting type="text" initialValue="" sort="30" conf="N">
+                    <Name>Dialog</Name>
+                    <ValueName>Spacer</ValueName>
+                    <Description></Description>
+                </Setting>
+                <!-- pixelcrab_fsk_show_dialog: Show dialog to confirm -->
+                <Setting type="checkbox" initialValue="on" sort="31" conf="Y">
+                    <Name>Anzeigen</Name>
+                    <Description>Dialog zum Bestätigen oder Ablehnen anzeigen.</Description>
+                    <ValueName>pixelcrab_fsk_show_dialog</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_ajax_submit: Use ajax to accept -->
+                <Setting type="checkbox" initialValue="on" sort="32" conf="Y">
+                    <Name>AJAX submit</Name>
+                    <Description>Die Seite wird nicht neu geladen wenn der Benutzer bestätigt.</Description>
+                    <ValueName>pixelcrab_fsk_ajax_submit</ValueName>
+                </Setting>
+            </Settingslink>
+        </Adminmenu>
+        <CSS>
+            <file>
+                <name>pixelcrab_fsk.css</name>
+                <priority>4</priority>
+            </file>
+        </CSS>
+        <JS>
+            <file>
+                <name>maxlength.js</name>
+                <priority>9</priority>
+                <position>body</position>
+            </file>
+            <file>
+                <name>pixelcrab_fsk.js</name>
+                <priority>8</priority>
+                <position>body</position>
+            </file>
+        </JS>
+    </Install>
+</jtlshop3plugin>
