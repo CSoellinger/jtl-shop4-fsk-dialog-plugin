@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding="ISO-8859-1"?>
 <jtlshop3plugin>
-    <Name>FSK Landing Warning</Name>
-    <Description>FSK landing warning plugin to view a warning as a landing page or as a dialog to the user that content is not for people younger than X.</Description>
+    <Name>FSK Landing Warnung</Name>
+    <Description>FSK landing Warnung Plugin um eine HTML Seite und/oder einen Dialog anzuzeigen wo ein Benutzer zuerst sein Alter bestätigen muss. Zusätzlich sind Exporte für age.xml, age-de.xml und miracle.xml möglich.</Description>
     <Author>Christopher Söllinger</Author>
-    <URL>https://www.pixelcrab.at</URL>
+    <URL>https://github.com/CSoellinger/jtl-shop4-plugin-fsk-landing-warning</URL>
     <PluginID>pixelcrab_fsk_landing_warning</PluginID>
     <XMLVersion>100</XMLVersion>
     <Shop4Version>400</Shop4Version>
@@ -11,6 +11,9 @@
     <Install>
         <Version nr="100">
             <CreateDate>2016-04-21</CreateDate>
+        </Version>
+        <Version nr="110">
+            <CreateDate>2017-01-29</CreateDate>
         </Version>
         <Hooks>
             <Hook id="132">132_index_navi_head_postget.php</Hook>
@@ -90,20 +93,20 @@
                     <ValueName>pixelcrab_fsk_min_age</ValueName>
                 </Setting>
                 <!-- pixelcrab_fsk_insert_meta: Insert meta tag into head -->
-                <Setting type="checkbox" initialValue="on" sort="11" conf="Y">
+                <Setting type="checkbox" initialValue="on" sort="12" conf="Y">
                     <Name>Meta Tag einfügen</Name>
                     <Description>Fügt in den Head Bereich einen meta tag ein.</Description>
                     <ValueName>pixelcrab_fsk_insert_meta</ValueName>
                 </Setting>
-                <!-- pixelcrab_fsk_header_max_age: Send max age header -->
-                <Setting type="checkbox" initialValue="on" sort="21" conf="Y">
-                    <Name>Send header x-max-age</Name>
+                <!-- pixelcrab_fsk_header_content_age: Send max age header -->
+                <Setting type="checkbox" initialValue="on" sort="13" conf="Y">
+                    <Name>Header x-content-age senden</Name>
                     <Description></Description>
-                    <ValueName>pixelcrab_fsk_header_max_age</ValueName>
+                    <ValueName>pixelcrab_fsk_header_content_age</ValueName>
                 </Setting>
                 <!-- pixelcrab_fsk_header_age_hash: Send age hash header -->
-                <Setting type="checkbox" initialValue="on" sort="22" conf="Y">
-                    <Name>Send header x-age-hash</Name>
+                <Setting type="checkbox" initialValue="on" sort="14" conf="Y">
+                    <Name>Header x-age-hash senden</Name>
                     <Description></Description>
                     <ValueName>pixelcrab_fsk_header_age_hash</ValueName>
                 </Setting>
@@ -136,9 +139,9 @@
                     <ValueName>pixelcrab_fsk_check_birthdate</ValueName>
                 </Setting>
                 <!-- pixelcrab_fsk_decline_url: If user decline redirect to this page -->
-                <Setting type="text" initialValue="https://duckduckgo.com" sort="13" conf="Y">
+                <Setting type="text" initialValue="" sort="13" conf="Y">
                     <Name>Ablehnen URL</Name>
-                    <Description>URL wenn der Benutzer nicht akzeptiert. Vollständige URL mit http:\/\/</Description>
+                    <Description>URL wenn der Benutzer nicht akzeptiert. Vollständige URL mit http://</Description>
                     <ValueName>pixelcrab_fsk_decline_url</ValueName>
                 </Setting>
                 <!-- === -->
@@ -200,7 +203,109 @@
                     <ValueName>pixelcrab_fsk_ajax_submit</ValueName>
                 </Setting>
             </Settingslink>
+            <Settingslink sort="3">
+                <Name>Exportformate anpassen</Name>
+                <!-- pixelcrab_fsk_agexml_insert_label_z: Insert label-z -->
+                <Setting type="checkbox" initialValue="" sort="9" conf="Y">
+                    <Name>Label-Z einfügen</Name>
+                    <Description>Fügt ein label-z in age.xml und age-[country].xml Dokumente ein.</Description>
+                    <ValueName>pixelcrab_fsk_agexml_insert_label_z</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_agexml_extra_scopes: If there are multiple shop scopes -->
+                <Setting type="text" initialValue="" sort="11" conf="Y">
+                    <Name>Zusätzliche Domains</Name>
+                    <Description>Falls der Shop über mehrere URLs erreichbar ist können diese hier mit Strich-Punkt(;) getrennt eingegeben werden. Die Domains sollten ausserdem mit /* enden. Beispiel: google.at/*</Description>
+                    <ValueName>pixelcrab_fsk_agexml_extra_scopes</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_agexml_content_desc: Content descriptions -->
+                <Setting type="selectbox" initialValue="" multiple="Y" sort="12" conf="Y">
+                    <Name>Inhalt Beschreibung</Name>
+                    <Description>Mehrfachauswahl mit Strg möglich</Description>
+                    <ValueName>pixelcrab_fsk_agexml_content_desc</ValueName>
+                    <OptionsSource>
+                        <File>content_desc_selectbox_src.php</File>
+                    </OptionsSource>
+                </Setting>
+                <!-- pixelcrab_fsk_agexml_content_desc_extra: Extra content descriptions -->
+                <Setting type="text" initialValue="" sort="13" conf="Y">
+                    <Name>Zusätzliche Inhalt Beschreibung</Name>
+                    <Description>Zusätzliche Inhalt Beschreibungen können hier mit Strich-Punkt(;) getrennt eingegeben werden.</Description>
+                    <ValueName>pixelcrab_fsk_agexml_content_desc_extra</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_agexml_feature_desc: Feature descriptions -->
+                <Setting type="selectbox" initialValue="" multiple="Y" sort="14" conf="Y">
+                    <Name>Feature Beschreibung</Name>
+                    <Description>Mehrfachauswahl mit Strg möglich</Description>
+                    <ValueName>pixelcrab_fsk_agexml_feature_desc</ValueName>
+                    <OptionsSource>
+                        <File>feature_desc_selectbox_src.php</File>
+                    </OptionsSource>
+                </Setting>
+                <!-- pixelcrab_fsk_agexml_feature_desc_extra: Extra feature descriptions -->
+                <Setting type="text" initialValue="" sort="15" conf="Y">
+                    <Name>Zusätzliche Feature Beschreibungen</Name>
+                    <Description>Zusätzliche Feature Beschreibungen können hier mit Strich-Punkt(;) getrennt eingegeben werden.</Description>
+                    <ValueName>pixelcrab_fsk_agexml_feature_desc_extra</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_agexml_issuer: Content checked by -->
+                <Setting type="text" initialValue="self-d" sort="16" conf="Y">
+                    <Name>Überprüft von</Name>
+                    <Description>https://wiki.selfhtml.org/wiki/Altersklassifikation#age-issuer</Description>
+                    <ValueName>pixelcrab_fsk_agexml_issuer</ValueName>
+                </Setting>
+            </Settingslink>
+            <Customlink sort="4">
+                <Name>Exportformate verwenden</Name>
+                <Filename>help_exportformate.php</Filename>
+            </Customlink>
         </Adminmenu>
+        <ExportFormat>
+            <Format>
+                <Name>[FSK Plugin] age.xml</Name>
+                <FileName>age.xml</FileName>
+                <Header></Header>
+                <ContentFile>ageXml.php</ContentFile>
+                <Encoding>ASCII</Encoding>
+                <VarCombiOption>0</VarCombiOption>
+                <OnlyStockGreaterZero>N</OnlyStockGreaterZero>
+                <OnlyPriceGreaterZero>N</OnlyPriceGreaterZero>
+                <OnlyProductsWithDescription>N</OnlyProductsWithDescription>
+                <ShippingCostsDeliveryCountry>DE</ShippingCostsDeliveryCountry>
+                <EncodingQuote>N</EncodingQuote>
+                <EncodingDoubleQuote>N</EncodingDoubleQuote>
+                <EncodingSemicolon>N</EncodingSemicolon>
+            </Format>
+            <Format>
+                <Name>[FSK Plugin] age-de.xml</Name>
+                <FileName>age-de.xml</FileName>
+                <Header></Header>
+                <ContentFile>ageCountryXml.php</ContentFile>
+                <Encoding>ASCII</Encoding>
+                <VarCombiOption>0</VarCombiOption>
+                <OnlyStockGreaterZero>N</OnlyStockGreaterZero>
+                <OnlyPriceGreaterZero>N</OnlyPriceGreaterZero>
+                <OnlyProductsWithDescription>N</OnlyProductsWithDescription>
+                <ShippingCostsDeliveryCountry>DE</ShippingCostsDeliveryCountry>
+                <EncodingQuote>N</EncodingQuote>
+                <EncodingDoubleQuote>N</EncodingDoubleQuote>
+                <EncodingSemicolon>N</EncodingSemicolon>
+            </Format>
+            <Format>
+                <Name>[FSK Plugin] miracle.xml</Name>
+                <FileName>miracle.xml</FileName>
+                <Header></Header>
+                <ContentFile>miracleXml.php</ContentFile>
+                <Encoding>ASCII</Encoding>
+                <VarCombiOption>0</VarCombiOption>
+                <OnlyStockGreaterZero>N</OnlyStockGreaterZero>
+                <OnlyPriceGreaterZero>N</OnlyPriceGreaterZero>
+                <OnlyProductsWithDescription>N</OnlyProductsWithDescription>
+                <ShippingCostsDeliveryCountry>DE</ShippingCostsDeliveryCountry>
+                <EncodingQuote>N</EncodingQuote>
+                <EncodingDoubleQuote>N</EncodingDoubleQuote>
+                <EncodingSemicolon>N</EncodingSemicolon>
+            </Format>
+        </ExportFormat>
         <CSS>
             <file>
                 <name>pixelcrab_fsk.css</name>
