@@ -12,6 +12,6 @@
   "scripts": {
     "build": "npm run build:sass",
     "build:sass": "node ./.scripts/sass.js",
-    "release": "release-it"
+    "release": "release-it --no-npm.publish"
   }
 }
