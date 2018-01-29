@@ -21,6 +21,9 @@
         <Version nr="112">
             <CreateDate>2017-01-29</CreateDate>
         </Version>
+        <Version nr="113">
+            <CreateDate>2017-01-29</CreateDate>
+        </Version>
         <Hooks>
             <Hook id="132">132_index_navi_head_postget.php</Hook>
             <Hook id="140">140_smarty_outputfilter.php</Hook>
