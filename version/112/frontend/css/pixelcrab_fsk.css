@@ -36,7 +36,7 @@
   font-size: 2.5em;
 }
 #fskPixelCrabLandingPage .landing-page-body {
-  height: 400px;
+  max-height: 400px;
   overflow-y: scroll;
 }
 #fskPixelCrabLandingPage .landing-page-footer {
