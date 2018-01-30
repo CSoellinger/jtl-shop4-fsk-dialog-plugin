@@ -19,18 +19,18 @@ if (class_exists('Shop')) {
     }
 
     // If we insert a dialog and/or a landing page we have to assign our smarty values
-    if (($pluginHelper->getConfig('show_landing_page') === "on" && $pluginHelper->fskAccept() === false) ||
-    ($pluginHelper->getConfig('show_dialog') === "on" && $pluginHelper->fskAccept() === false)) {
+    if (($pluginHelper->getConfig('show_landing_page') === "1" && $pluginHelper->fskAccept() === false) ||
+    ($pluginHelper->getConfig('show_dialog') === "1" && $pluginHelper->fskAccept() === false)) {
         $pluginHelper->assignSmartyValues();
     }
     
     // Insert landing page
-    if ($pluginHelper->getConfig('show_landing_page') === "on" && $pluginHelper->fskAccept() === false) {
+    if ($pluginHelper->getConfig('show_landing_page') === "1" && $pluginHelper->fskAccept() === false) {
         $pluginHelper->insertLandingPage();
     }
     
     // Insert dialog
-    if ($pluginHelper->getConfig('show_dialog') === "on" && $pluginHelper->fskAccept() === false) {
+    if ($pluginHelper->getConfig('show_dialog') === "1" && $pluginHelper->fskAccept() === false) {
         $pluginHelper->insertDialog();
     }
 }

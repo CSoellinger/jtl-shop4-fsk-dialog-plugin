@@ -214,8 +214,8 @@ class pluginHelper
 
         $this->smarty->assign('min_age', $min_age);
         $this->smarty->assign('decline_url', $this->getConfig('decline_url'));
-        $this->smarty->assign('ajax_submit', ($this->getConfig('ajax_submit') === "on"));
-        $this->smarty->assign('check_birthdate', ($this->getConfig('check_birthdate') === "on"));
+        $this->smarty->assign('ajax_submit', ($this->getConfig('ajax_submit') === "1"));
+        $this->smarty->assign('check_birthdate', ($this->getConfig('check_birthdate') === "1"));
         $this->smarty->assign('max_birthdate_year', date('Y') - $min_age);
 
         $this->smarty->assign('shop_url', Shop::getURL());
@@ -245,8 +245,8 @@ class pluginHelper
         $this->smarty->assign('using_http_header', $this->getConfig('header_content_age') === 'on' ? 'true' : 'false');
         $this->smarty->assign('using_html_meta', $this->getConfig('insert_meta') === 'on' ? 'true' : 'false');
         $this->smarty->assign('using_label_z', $this->getConfig('agexml_insert_label_z') === 'on' ? 'true' : 'false');
-        $this->smarty->assign('using_landing_page_or_dialog', $this->getConfig('show_landing_page') === "on" || $this->getConfig('show_dialog') === "on" ? 'true' : 'false');
-        $this->smarty->assign('using_birthdate_input', $this->getConfig('check_birthdate') === "on" ? 'true' : 'false');
+        $this->smarty->assign('using_landing_page_or_dialog', $this->getConfig('show_landing_page') === "1" || $this->getConfig('show_dialog') === "1" ? 'true' : 'false');
+        $this->smarty->assign('using_birthdate_input', $this->getConfig('check_birthdate') === "1" ? 'true' : 'false');
 
         $this->smarty->assign('cookie_lifetime_d', floor($this->getCookieLifetime() / (24 * 60 * 60)));
 
