@@ -11,6 +11,7 @@ JTL Shop4 Plugin
         - [Text](#text)
         - [Geburtsdatum prüfen](#geburtsdatum-pr%C3%BCfen)
         - [Ablehnen URL](#ablehnen-url)
+        - [Bots erlauben](#bots-erlauben)
         - [Landing Page anzeigen](#landing-page-anzeigen)
         - [Landing Page - Seiten Header/Nav/Sidebar/Footer ausblenden](#landing-page---seiten-headernavsidebarfooter-ausblenden)
         - [Dialog anzeigen](#dialog-anzeigen)
@@ -56,6 +57,10 @@ Ist diese Option aktiv wird eine Eingabemöglichkeit für das Geburtsdatum angez
 ### Ablehnen URL
 
 Wird hier eine URL angegeben so wird der Benutzer beim Ablehnen auf diese Seite weiter geleitet. Falls keine URL angegeben ist wird per JavaScript das Fenster geschlossen.
+
+### Bots erlauben
+
+Per Default wird für Suchmaschinen Bots kein Dialog und keine Landing Page angezeigt. Mit dieser Option können Sie es erlauben. 
 
 ### Landing Page anzeigen
 

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding="ISO-8859-1"?>
 <jtlshop3plugin>
-    <Name>FSK Landing Warnung</Name>
+    <Name>PixelCrab FSK Landing Warnung</Name>
     <Description>FSK landing Warnung Plugin um eine HTML Seite und/oder einen Dialog anzuzeigen wo ein Benutzer zuerst sein Alter bestätigen muss. Zusätzlich sind Exporte für age.xml, age-de.xml und miracle.xml möglich.</Description>
     <Author>Christopher Söllinger</Author>
     <URL>https://github.com/CSoellinger/jtl-shop4-plugin-fsk-landing-warning</URL>
@@ -23,6 +23,9 @@
         </Version>
         <Version nr="113">
             <CreateDate>2017-01-29</CreateDate>
+        </Version>
+        <Version nr="120">
+            <CreateDate>2017-01-30</CreateDate>
         </Version>
         <Hooks>
             <Hook id="132">132_index_navi_head_postget.php</Hook>
@@ -102,19 +105,19 @@
                     <ValueName>pixelcrab_fsk_min_age</ValueName>
                 </Setting>
                 <!-- pixelcrab_fsk_insert_meta: Insert meta tag into head -->
-                <Setting type="checkbox" initialValue="on" sort="12" conf="Y">
+                <Setting type="checkbox" initialValue="1" sort="12" conf="Y">
                     <Name>Meta Tag einfügen</Name>
                     <Description>Fügt in den Head Bereich einen meta tag ein.</Description>
                     <ValueName>pixelcrab_fsk_insert_meta</ValueName>
                 </Setting>
                 <!-- pixelcrab_fsk_header_content_age: Send max age header -->
-                <Setting type="checkbox" initialValue="on" sort="13" conf="Y">
+                <Setting type="checkbox" initialValue="1" sort="13" conf="Y">
                     <Name>Header x-content-age senden</Name>
                     <Description></Description>
                     <ValueName>pixelcrab_fsk_header_content_age</ValueName>
                 </Setting>
                 <!-- pixelcrab_fsk_header_age_hash: Send age hash header -->
-                <Setting type="checkbox" initialValue="on" sort="14" conf="Y">
+                <Setting type="checkbox" initialValue="1" sort="14" conf="Y">
                     <Name>Header x-age-hash senden</Name>
                     <Description></Description>
                     <ValueName>pixelcrab_fsk_header_age_hash</ValueName>
@@ -142,7 +145,7 @@
                     </SelectboxOptions>
                 </Setting>
                 <!-- pixelcrab_fsk_check_birthdate: Check birthdate before user can confirm -->
-                <Setting type="checkbox" initialValue="on" sort="12" conf="Y">
+                <Setting type="checkbox" initialValue="1" sort="12" conf="Y">
                     <Name>Geburtsdatum überprüfen</Name>
                     <Description>Der Benutzer muss sein Geburtsdatum eingeben bevor er fortfahren kann.</Description>
                     <ValueName>pixelcrab_fsk_check_birthdate</ValueName>
@@ -152,6 +155,12 @@
                     <Name>Ablehnen URL</Name>
                     <Description>URL wenn der Benutzer nicht akzeptiert. Vollständige URL mit http://</Description>
                     <ValueName>pixelcrab_fsk_decline_url</ValueName>
+                </Setting>
+                <!-- pixelcrab_fsk_allow_bots: Bots can see the warning -->
+                <Setting type="checkbox" initialValue="" sort="14" conf="Y">
+                    <Name>Bots erlauben</Name>
+                    <Description>Der Dialog oder die Landing Page werden auch für Bots angezeigt.</Description>
+                    <ValueName>pixelcrab_fsk_allow_bots</ValueName>
                 </Setting>
                 <!-- === -->
                 <!-- Landing page settings -->
@@ -200,13 +209,13 @@
                     <Description></Description>
                 </Setting>
                 <!-- pixelcrab_fsk_show_dialog: Show dialog to confirm -->
-                <Setting type="checkbox" initialValue="on" sort="31" conf="Y">
+                <Setting type="checkbox" initialValue="1" sort="31" conf="Y">
                     <Name>Anzeigen</Name>
                     <Description>Dialog zum Bestätigen oder Ablehnen anzeigen.</Description>
                     <ValueName>pixelcrab_fsk_show_dialog</ValueName>
                 </Setting>
                 <!-- pixelcrab_fsk_ajax_submit: Use ajax to accept -->
-                <Setting type="checkbox" initialValue="on" sort="32" conf="Y">
+                <Setting type="checkbox" initialValue="1" sort="32" conf="Y">
                     <Name>AJAX submit</Name>
                     <Description>Die Seite wird nicht neu geladen wenn der Benutzer bestätigt.</Description>
                     <ValueName>pixelcrab_fsk_ajax_submit</ValueName>
