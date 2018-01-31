@@ -153,7 +153,7 @@
                 <!-- pixelcrab_fsk_decline_url: If user decline redirect to this page -->
                 <Setting type="text" initialValue="" sort="13" conf="Y">
                     <Name>Ablehnen URL</Name>
-                    <Description>URL wenn der Benutzer nicht akzeptiert. Vollständige URL mit http://</Description>
+                    <Description>URL wenn der Benutzer nicht akzeptiert. Vollständige URL mit https://</Description>
                     <ValueName>pixelcrab_fsk_decline_url</ValueName>
                 </Setting>
                 <!-- pixelcrab_fsk_allow_bots: Bots can see the warning -->
