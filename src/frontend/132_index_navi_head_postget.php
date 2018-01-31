@@ -12,7 +12,7 @@ if (class_exists('Shop')) {
     require_once $oPlugin->cFrontendPfad . '../include/class.pcfwl.helper.php';
     $pcfwlHelper = pcfwlHelper::getInstance($oPlugin);
 
-    // Check if accepFsk query string is set
+    // Check if tFsk query string is set
     if (strtoupper(filter_input(INPUT_GET, 'acceptFsk', FILTER_SANITIZE_STRING)) === pcfwlHelper::COOKIE_VALUE_ACCEPT) {
         $pcfwlHelper->writeCookie(pcfwlHelper::COOKIE_VALUE_ACCEPT);
 
@@ -33,12 +33,12 @@ if (class_exists('Shop')) {
         exit;
     }
 
-    // Send header if neccessary
+    // Send header if necessary
     if ($pcfwlHelper->getConfig('header_content_age') === 'on') {
         header('X-content-age: "' . $pcfwlHelper->getConfig('min_age') . '"');
     }
     
-    // Send header if neccessary
+    // Send header if necessary
     if ($pcfwlHelper->getConfig('header_age_hash') === 'on') {
         $ageHash = md5(filter_input(INPUT_SERVER, 'SERVER_ADDR').$oPlugin->dInstalliert);
         header('X-age-hash: "' . $ageHash . '"');

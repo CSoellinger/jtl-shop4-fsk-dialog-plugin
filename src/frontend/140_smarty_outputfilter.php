@@ -12,7 +12,7 @@ if (class_exists('Shop')) {
     require_once $oPlugin->cFrontendPfad . '../include/class.pcfwl.helper.php';
     $pcfwlHelper = pcfwlHelper::getInstance($oPlugin);
 
-    // Insert meta tag if neccessary
+    // Insert meta tag if necessary
     if ($pcfwlHelper->getConfig('insert_meta') === 'on') {
         $ageHash = md5(filter_input(INPUT_SERVER, 'SERVER_ADDR').$oPlugin->dInstalliert);
         pq('head')

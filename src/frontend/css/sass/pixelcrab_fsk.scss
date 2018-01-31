@@ -6,113 +6,111 @@
 
 /// Landing page styles
 #fskPixelCrabLandingPage {
-    padding: 0 10px;
+  padding: 0 10px;
 
+  h4 {
+    font-size: 2.5em;
+  }
+
+  .landing-page-body {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+  .landing-page-footer {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
     h4 {
-        font-size: 2.5em;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      margin-top: 0;
     }
-    
-    .landing-page-body {
-        max-height: 300px;
-        overflow-y: scroll;
-    }
-    
-    .landing-page-footer {
-        margin-top: 50px;
-        text-align: center;
-    }
-    
-    
-    @media(max-width: 480px) {
-        h4 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            margin-top: 0;
-        }
-    }
+  }
 }
 
 /// Modal dialog styles
 #fskPixelCrabLandingModal {
-    .modal-title {
-        padding-bottom: 0;
-    }
-    
-    .modal-header {
-        padding: 10px 15px;
-    }
-    
-    .modal-body-content {
-        width: 100%;
-        height: 300px;
-        overflow-y: scroll;
-    }
-    
-    @media(max-height: 480px) {
-        .modal-body-content {
-            height: 240px;
-        }
+  .modal-title {
+    padding-bottom: 0;
+  }
 
-        .modal-body-content.birthdate-next {
-            height: 140px;
-            overflow-y: scroll;
-        }
+  .modal-header {
+    padding: 10px 15px;
+  }
+
+  .modal-body-content {
+    width: 100%;
+    height: 300px;
+    overflow-y: scroll;
+  }
+
+  @media (max-height: 480px) {
+    .modal-body-content {
+      height: 240px;
     }
+
+    .modal-body-content.birthdate-next {
+      height: 140px;
+      overflow-y: scroll;
+    }
+  }
 }
 
 /// Styles for both. Modal Dialog and Landing page
-#fskPixelCrabLandingPage, #fskPixelCrabLandingModal {
-    .birthdate-container input.error {
-        border-color: #ff0000;
+#fskPixelCrabLandingPage,
+#fskPixelCrabLandingModal {
+  .birthdate-container input.error {
+    border-color: #ff0000;
+  }
+
+  @media (max-height: 480px) {
+    .btn {
+      font-size: .95em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .text-left {
+      text-align: right;
     }
 
-    @media(max-height: 480px) {
-        .btn {
-            font-size: .95em;
-        }
+    .margin-for-mobile {
+      margin-bottom: 5px;
     }
-
-    @media(max-width: 480px) {
-        .text-left {
-            text-align: right;
-        }
-
-        .margin-for-mobile {
-            margin-bottom: 5px;
-        }
-    }
+  }
 }
 
 /// Setup blur filter for modal dialogs
 #fskPixelCrabLandingModal + .modal-overlay + #main-wrapper {
-    filter: blur(0);
-    transition: filter 500ms ease;
-    
-    .modal-open & {
-        filter: blur(5px);
-    }
+  filter: blur(0);
+  transition: filter 500ms ease;
+
+  .modal-open & {
+    filter: blur(5px);
+  }
 }
 
 /// Some corrections for modal overlay
 #fskPixelCrabLandingModal + .modal-overlay {
-    display: none;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1040;
-    -webkit-overflow-scrolling: touch;
-    outline: 0;
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  background: rgba(0, 0, 0, 0.0);
+  transition: background 500ms ease;
 
-    background: rgba(0, 0, 0, 0.0);
-
-    transition: background 500ms ease;
-
-    .modal-open & {
-        overflow-x: hidden;
-        overflow-y: auto;
-        background: rgba(0, 0, 0, 0.6);
-    }
+  .modal-open & {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.6);
+  }
 }

@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-  
+
   /**
    * Handle submit
    */
@@ -8,8 +8,8 @@ jQuery(document).ready(function ($) {
 
     if (ajaxSubmit === true) {
       $.ajax(form.attr('action') + '&req=ajax')
-      .done(function (obj) {}).fail(function (err) {});
-      
+        .done(function (obj) { }).fail(function (err) { });
+
       if ($('#fskPixelCrabLandingModal').length > 0) {
         $('#fskPixelCrabLandingModal').modal('hide');
         $('.modal-overlay').hide();
@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
     if (form.find('.birthdate-container').length > 0) {
       var uDate = new Date();
       var uDay = form.find('input[name="day"]').val() || uDate.getDate();
-      var uMonth = (form.find('input[name="month"]').val() || uDate.getMonth() + 1) -1;
+      var uMonth = (form.find('input[name="month"]').val() || uDate.getMonth() + 1) - 1;
       var uYear = form.find('input[name="year"]').val() || uDate.getFullYear();
       var minAge = form.find('input[name="minAge"]').val() || 0;
 
@@ -80,7 +80,7 @@ jQuery(document).ready(function ($) {
     }).on('hidden.bs.modal', function () {
       $(this).data('bs.modal', null);
     });
-    
+
     $('.modal-overlay').show();
 
     $('#fskPixelCrabLandingModal').on('click', '.btn-success', function (e) {
@@ -88,8 +88,8 @@ jQuery(document).ready(function ($) {
       handleClick($('#fskPixelCrabLandingModal form'));
     });
   }
-  
-  // Only bind event on landing page if neccessary
+
+  // Only bind event on landing page if necessary
   if ($('#fskPixelCrabLandingPage').length > 0) {
     $('#fskPixelCrabLandingPage').on('click', '.btn-success', function (e) {
       e.preventDefault();

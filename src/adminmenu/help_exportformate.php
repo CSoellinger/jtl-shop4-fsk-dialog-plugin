@@ -18,9 +18,9 @@ if (!class_exists('Parsedown')) {
 $text = file_get_contents($oPlugin->cFrontendPfad . '../../../README.md');
 $s = new \diversen\markdownSplit();
 
-$res = $s->splitMarkdownAtLevel($text, $setext = true, $level = 4);
+$res = $s->splitMarkdownAtLevel($text, true, 4);
 
-// @todo Find a better way to extract neccessary markdown texts
+// @todo Find a better way to extract necessary markdown texts
 $res = array($res[6], $res[7], $res[8]);
 $texts = array();
 
@@ -31,7 +31,7 @@ foreach ($res as $key => $value) {
         'header' => utf8_decode($value['header_md']),
         'header_html' => $Parsedown->text(utf8_decode($value['header_md'])),
         'body' => utf8_decode($value['body']),
-        'body_html' => str_replace('&amp;', '&', $Parsedown->text(htmlentities(utf8_decode($value['body']))))
+        'body_html' => str_replace('&amp;', '&', $Parsedown->text(htmlentities(utf8_decode($value['body'])))),
     ));
 }
 
