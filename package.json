@@ -5,13 +5,22 @@
   "author": "CSoellinger <cs@pixelcrab.at>",
   "license": "MIT",
   "devDependencies": {
-    "find": "^0.2.8",
+    "copy": "^0.3.1",
+    "del": "^3.0.0",
+    "file-zip": "^1.0.1",
+    "find": "^0.2.9",
+    "fs-extra": "^5.0.0",
     "release-it": "^6.1.1",
-    "sass": "^1.0.0-beta.4"
+    "sass": "^1.0.0-beta.4",
+    "semver": "^5.5.0",
+    "xml2js": "^0.4.19",
+    "yargs": "^11.0.0"
   },
   "scripts": {
-    "build": "npm run build:sass",
-    "build:sass": "node ./.scripts/sass.js",
-    "release": "release-it --no-npm.publish"
+    "build": "npm run sass",
+    "sass": "node ./.scripts/sass.js",
+    "create-zip": "node ./.scripts/create-zip-package.js",
+    "new-version": "node ./.scripts/new-plugin-version.js",
+    "release-commit": "release-it -n"
   }
 }
