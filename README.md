@@ -28,8 +28,7 @@ Es handelt sich hier um ein simples Plugin welches als FSK Warnung hergenommen w
 
 ## Installation
 
-Gehen Sie auf der Github Seite auf "Releases" un
-d laden Sie die letzte Version herunter. Diese können Sie im Shop Backend unter Plugin Verwaltung hochladen, installieren und/oder aktualisieren.
+Gehen Sie auf der Github Seite auf "Releases" und laden Sie die letzte Version herunter. Diese können Sie im Shop Backend unter Plugin Verwaltung hochladen, installieren und/oder aktualisieren.
 
 ## Anleitung
 
