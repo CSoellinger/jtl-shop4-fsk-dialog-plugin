@@ -30,6 +30,9 @@
         <Version nr="130">
             <CreateDate>2018-02-01</CreateDate>
         </Version>
+        <Version nr="131">
+            <CreateDate>2018-02-01</CreateDate>
+        </Version>
         <Hooks>
             <Hook id="132">pcfwl_132_index_navi_head_postget.php</Hook>
             <Hook id="140">pcfwl_140_smarty_outputfilter.php</Hook>
