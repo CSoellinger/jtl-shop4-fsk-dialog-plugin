@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 1.3.1
+
+doc(Documentation): Add some more documentation
+
+## Version 1.3.0
+
+- refactor(code): Some modifications to make used files and variables more unique
+
 ## Version 1.2.0
 
 - feat(Bot): Ban Bots by default so that they see the content from the page
