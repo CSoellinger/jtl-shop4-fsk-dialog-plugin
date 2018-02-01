@@ -212,7 +212,7 @@
                     <Description></Description>
                 </Setting>
                 <!-- pcfwl_show_dialog: Show dialog to confirm -->
-                <Setting type="checkbox" initialValue="on" sort="31" conf="Y">
+                <Setting type="checkbox" initialValue="" sort="31" conf="Y">
                     <Name>Anzeigen</Name>
                     <Description>Dialog zum Bestätigen oder Ablehnen anzeigen.</Description>
                     <ValueName>pcfwl_show_dialog</ValueName>
