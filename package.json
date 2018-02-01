@@ -21,6 +21,7 @@
     "sass": "node ./.scripts/sass.js",
     "zip-pkg": "node ./.scripts/plugin-pkg-helper.js --zip-pkg",
     "zip-next-test": "npm run create-version && npm run zip-pkg && npm run remove-last-version",
+    "create-zip": "npm run zip-pkg",
     "create-version": "npm run create-version-patch",
     "create-version-patch": "node ./.scripts/plugin-pkg-helper.js --create-version=patch",
     "create-version-minor": "node ./.scripts/plugin-pkg-helper.js --create-version=minor",
