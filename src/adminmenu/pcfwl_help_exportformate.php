@@ -8,10 +8,10 @@
 
 global $oPlugin;
 
-require_once $oPlugin->cFrontendPfad . '../vendor/markdownSplit.php';
+require_once $oPlugin->cFrontendPfad . '../vendor/pcfwl_markdownSplit.php';
 
 if (!class_exists('Parsedown')) {
-    require_once $oPlugin->cFrontendPfad . '../vendor/Parsedown.php';
+    require_once $oPlugin->cFrontendPfad . '../vendor/pcfwl_Parsedown.php';
 }
 
 // Get content from README.md
@@ -35,5 +35,5 @@ foreach ($res as $key => $value) {
     ));
 }
 
-$smarty->assign('help_exportformate_texts', $texts);
-$smarty->display($oPlugin->cAdminmenuPfad . 'template/help-exportformate.tpl');
+$smarty->assign('pcfwl_help_exportformate_texts', $texts);
+$smarty->display($oPlugin->cAdminmenuPfad . 'template/pcfwl_help-exportformate.tpl');

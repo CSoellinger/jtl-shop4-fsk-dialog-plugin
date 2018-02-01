@@ -5,7 +5,7 @@
 ////
 
 /// Landing page styles
-#fskPixelCrabLandingPage {
+.pcfwlLandingPage {
   padding: 0 10px;
 
   h4 {
@@ -32,7 +32,7 @@
 }
 
 /// Modal dialog styles
-#fskPixelCrabLandingModal {
+.pcfwlLandingModal {
   .modal-title {
     padding-bottom: 0;
   }
@@ -60,10 +60,25 @@
 }
 
 /// Styles for both. Modal Dialog and Landing page
-#fskPixelCrabLandingPage,
-#fskPixelCrabLandingModal {
+.pcfwlLandingPage,
+.pcfwlLandingModal {
   .birthdate-container input.error {
     border-color: #ff0000;
+  }
+
+  .birthdate-container {
+    input[type="text"] {
+      text-align: center;
+    }
+
+    input[name="day"],
+    input[name="month"] {
+      width: 50px;
+    }
+    
+    input[name="year"] {
+      width: 70px;
+    }
   }
 
   @media (max-height: 480px) {
@@ -84,7 +99,7 @@
 }
 
 /// Setup blur filter for modal dialogs
-#fskPixelCrabLandingModal + .modal-overlay + #main-wrapper {
+.pcfwlLandingModal + .modal-overlay + #main-wrapper {
   filter: blur(0);
   transition: filter 500ms ease;
 
@@ -94,7 +109,7 @@
 }
 
 /// Some corrections for modal overlay
-#fskPixelCrabLandingModal + .modal-overlay {
+.pcfwlLandingModal + .modal-overlay {
   display: none;
   overflow: hidden;
   position: fixed;

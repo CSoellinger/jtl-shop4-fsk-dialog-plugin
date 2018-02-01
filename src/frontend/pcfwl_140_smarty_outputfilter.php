@@ -14,10 +14,7 @@ if (class_exists('Shop')) {
 
     // Insert meta tag if necessary
     if ($pcfwlHelper->getConfig('insert_meta') === 'on') {
-        $ageHash = md5(filter_input(INPUT_SERVER, 'SERVER_ADDR').$oPlugin->dInstalliert);
-        pq('head')
-            ->prepend('<meta name="age-de-meta-label" content="age=' . $pcfwlHelper->getConfig('min_age') . ' hash: ' . $ageHash . ' v=1.0 kind=sl protocol=all" />')
-            ->prepend('<meta name="age-meta-label" content="age=' . $pcfwlHelper->getConfig('min_age') . '" />');
+        $pcfwlHelper->insertMetaTags();
     }
 
     $session = Session::getInstance();

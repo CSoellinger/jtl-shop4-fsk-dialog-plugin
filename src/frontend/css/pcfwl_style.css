@@ -1,0 +1,105 @@
+.pcfwlLandingPage {
+  padding: 0 10px;
+}
+.pcfwlLandingPage h4 {
+  font-size: 2.5em;
+}
+.pcfwlLandingPage .landing-page-body {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.pcfwlLandingPage .landing-page-footer {
+  margin-top: 50px;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .pcfwlLandingPage h4 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    margin-top: 0;
+  }
+}
+
+.pcfwlLandingModal .modal-title {
+  padding-bottom: 0;
+}
+.pcfwlLandingModal .modal-header {
+  padding: 10px 15px;
+}
+.pcfwlLandingModal .modal-body-content {
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+}
+@media (max-height: 480px) {
+  .pcfwlLandingModal .modal-body-content {
+    height: 240px;
+  }
+  .pcfwlLandingModal .modal-body-content.birthdate-next {
+    height: 140px;
+    overflow-y: scroll;
+  }
+}
+
+.pcfwlLandingPage .birthdate-container input.error,
+.pcfwlLandingModal .birthdate-container input.error {
+  border-color: #ff0000;
+}
+.pcfwlLandingPage .birthdate-container input[type=text],
+.pcfwlLandingModal .birthdate-container input[type=text] {
+  text-align: center;
+}
+.pcfwlLandingPage .birthdate-container input[name=day],
+.pcfwlLandingPage .birthdate-container input[name=month],
+.pcfwlLandingModal .birthdate-container input[name=day],
+.pcfwlLandingModal .birthdate-container input[name=month] {
+  width: 50px;
+}
+.pcfwlLandingPage .birthdate-container input[name=year],
+.pcfwlLandingModal .birthdate-container input[name=year] {
+  width: 70px;
+}
+@media (max-height: 480px) {
+  .pcfwlLandingPage .btn,
+.pcfwlLandingModal .btn {
+    font-size: 0.95em;
+  }
+}
+@media (max-width: 480px) {
+  .pcfwlLandingPage .text-left,
+.pcfwlLandingModal .text-left {
+    text-align: right;
+  }
+  .pcfwlLandingPage .margin-for-mobile,
+.pcfwlLandingModal .margin-for-mobile {
+    margin-bottom: 5px;
+  }
+}
+
+.pcfwlLandingModal + .modal-overlay + #main-wrapper {
+  filter: blur(0);
+  transition: filter 500ms ease;
+}
+.modal-open .pcfwlLandingModal + .modal-overlay + #main-wrapper {
+  filter: blur(5px);
+}
+
+.pcfwlLandingModal + .modal-overlay {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 500ms ease;
+}
+.modal-open .pcfwlLandingModal + .modal-overlay {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.6);
+}

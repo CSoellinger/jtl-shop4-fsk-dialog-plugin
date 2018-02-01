@@ -16,7 +16,7 @@ if (class_exists('Shop')) {
     if (strtoupper(filter_input(INPUT_GET, 'acceptFsk', FILTER_SANITIZE_STRING)) === pcfwlHelper::COOKIE_VALUE_ACCEPT) {
         $pcfwlHelper->writeCookie(pcfwlHelper::COOKIE_VALUE_ACCEPT);
 
-        if (filter_input(INPUT_POST, 'ajaxSubmit', FILTER_SANITIZE_STRING) === 1 && $pcfwlHelper->getConfig('ajax_submit')) {
+        if (filter_input(INPUT_POST, 'ajaxSubmit', FILTER_SANITIZE_STRING) === 1 && $pcfwlHelper->getConfig('pcfwl_ajax_submit')) {
             exit;
         }
 
@@ -35,12 +35,11 @@ if (class_exists('Shop')) {
 
     // Send header if necessary
     if ($pcfwlHelper->getConfig('header_content_age') === 'on') {
-        header('X-content-age: "' . $pcfwlHelper->getConfig('min_age') . '"');
+        $pcfwlHelper->setContentAgeHeader();
     }
     
     // Send header if necessary
     if ($pcfwlHelper->getConfig('header_age_hash') === 'on') {
-        $ageHash = md5(filter_input(INPUT_SERVER, 'SERVER_ADDR').$oPlugin->dInstalliert);
-        header('X-age-hash: "' . $ageHash . '"');
+        $pcfwlHelper->setAgeHashHeader();
     }
 }

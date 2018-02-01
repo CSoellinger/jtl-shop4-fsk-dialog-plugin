@@ -1,8 +1,8 @@
-{if !empty($agexml_content_desc) || !empty($agexml_content_desc_extra)}
+{if !empty($pcfwl_agexml_content_desc) || !empty($pcfwl_agexml_content_desc_extra)}
 <content-descriptors>
     
-    {if !empty($agexml_content_desc)}
-    {foreach from=$agexml_content_desc item=$item key=$key}
+    {if !empty($pcfwl_agexml_content_desc)}
+    {foreach from=$pcfwl_agexml_content_desc item=$item key=$key}
         {if !empty($item)}
         <cd-{$item}>
             <cd-{$item}-exist>true</cd-{$item}-exist>
@@ -13,8 +13,8 @@
     {/foreach}
     {/if}
 
-    {if !empty($agexml_content_desc_extra)}
-    {foreach from=$agexml_content_desc_extra item=$item key=$key}
+    {if !empty($pcfwl_agexml_content_desc_extra)}
+    {foreach from=$pcfwl_agexml_content_desc_extra item=$item key=$key}
         {if !empty($item)}
         <cd-other>
             <cd-add class="{$item}">

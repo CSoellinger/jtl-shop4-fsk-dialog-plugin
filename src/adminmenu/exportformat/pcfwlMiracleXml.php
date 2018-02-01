@@ -6,14 +6,14 @@
  * @copyright 2016 PixelCrab
  */
 
-include_once 'inc/pre-export.php';
+include_once 'inc/pcfwl_pre-export.php';
 
 $pcfwlHelper->assignXmlSmartyValues();
 
 $doc = new DOMDocument();
 $doc->preserveWhiteSpace = false;
 $doc->formatOutput = true;
-$doc->loadXML($pcfwlHelper->getXml('miracle.xml'));
+$doc->loadXML($pcfwlHelper->getXmlFromTpl('miracle.xml'));
 $xml_string = $doc->saveXML();
 
-include_once 'inc/post-export.php';
+include_once 'inc/pcfwl_post-export.php';

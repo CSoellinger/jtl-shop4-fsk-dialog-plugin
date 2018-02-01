@@ -10,8 +10,8 @@ jQuery(document).ready(function ($) {
       $.ajax(form.attr('action') + '&req=ajax')
         .done(function (obj) { }).fail(function (err) { });
 
-      if ($('#fskPixelCrabLandingModal').length > 0) {
-        $('#fskPixelCrabLandingModal').modal('hide');
+      if ($('.pcfwlLandingModal').length > 0) {
+        $('.pcfwlLandingModal').modal('hide');
         $('.modal-overlay').hide();
       }
 
@@ -73,8 +73,8 @@ jQuery(document).ready(function ($) {
   }
 
   // Only show modal if it is neccessary
-  if ($('#fskPixelCrabLandingModal').length > 0) {
-    $('#fskPixelCrabLandingModal').modal({
+  if ($('.pcfwlLandingModal').length > 0) {
+    $('.pcfwlLandingModal').modal({
       backdrop: 'static',
       keyboard: false
     }).on('hidden.bs.modal', function () {
@@ -83,18 +83,17 @@ jQuery(document).ready(function ($) {
 
     $('.modal-overlay').show();
 
-    $('#fskPixelCrabLandingModal').on('click', '.btn-success', function (e) {
+    $('.pcfwlLandingModal').on('click', '.btn-success', function (e) {
       e.preventDefault();
-      handleClick($('#fskPixelCrabLandingModal form'));
+      handleClick($('.pcfwlLandingModal form'));
     });
   }
 
   // Only bind event on landing page if necessary
-  if ($('#fskPixelCrabLandingPage').length > 0) {
-    $('#fskPixelCrabLandingPage').on('click', '.btn-success', function (e) {
+  if ($('.pcfwlLandingPage').length > 0) {
+    $('.pcfwlLandingPage').on('click', '.btn-success', function (e) {
       e.preventDefault();
-      handleClick($('#fskPixelCrabLandingPage form'));
+      handleClick($('.pcfwlLandingPage form'));
     });
   }
 });
-

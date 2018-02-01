@@ -1,8 +1,8 @@
-{if !empty($agexml_feature_desc) || !empty($agexml_feature_desc_extra)}
+{if !empty($pcfwl_agexml_feature_desc) || !empty($pcfwl_agexml_feature_desc_extra)}
 <feature-descriptors>
 
-    {if !empty($agexml_content_desc)}
-    {foreach from=$agexml_feature_desc item=$item key=$key}
+    {if !empty($pcfwl_agexml_content_desc)}
+    {foreach from=$pcfwl_agexml_feature_desc item=$item key=$key}
         {if !empty($item)}
         <fd-{$item}>
             <fd-{$item}-exist>true</fd-{$item}-exist>
@@ -13,8 +13,8 @@
     {/foreach}
     {/if}
 
-    {if !empty($agexml_feature_desc)}
-    {foreach from=$agexml_feature_desc_extra item=$item key=$key}
+    {if !empty($pcfwl_agexml_feature_desc_extra)}
+    {foreach from=$pcfwl_agexml_feature_desc_extra item=$item key=$key}
         {if !empty($itemt)}
         <fd-other>
             <fd-add class="{$item}">
