@@ -1,9 +1,13 @@
 <?php
+
 /**
  * Read some texts from README.md and parse it as HTML
  *
  * @author PixelCrab <cs@pixelcrab.at>
  * @copyright 2016 PixelCrab
+ * 
+ * @global JTLSmarty $smarty
+ * @global Plugin $oPlugin
  */
 
 global $oPlugin;

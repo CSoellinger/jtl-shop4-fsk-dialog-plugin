@@ -20,27 +20,27 @@ class pcfwlHelper
     private $plugin = null;
 
     /**
-     * @var null|Smarty Smarty instance
+     * @var null|JTLSmarty Smarty instance
      */
     private $smarty = null;
 
     /**
-     * @var string Cookie name
+     * @var String Cookie name
      */
-    const COOKIE_NAME = 'PCFWLACC';
+    const COOKIE_NAME = 'JTLFSKACC';
 
     /**
-     * @var int Cookie lifetime (default 30 days if global setting is 0)
+     * @var Number Cookie lifetime (default 30 days if global setting is 0)
      */
     const COOKIE_EXTRA_LIFETIME = 60 * 60 * 24 * 30;
 
     /**
-     * @var string Value if fsk warning accepted
+     * @var String Value if fsk warning accepted
      */
     const COOKIE_VALUE_ACCEPT = 'Y';
 
     /**
-     * @var string Value if fsk warning is declined
+     * @var String Value if fsk warning is declined
      */
     const COOKIE_VALUE_DECLINE = 'N';
 
@@ -58,30 +58,32 @@ class pcfwlHelper
      * constructor
      * 
      * @param Plugin $oPlugin
+     * @param JTLSmarty $smarty
      */
-    public function __construct(Plugin $oPlugin)
+    public function __construct(Plugin $oPlugin, JTLSmarty $smarty)
     {
         $this->plugin = $oPlugin;
-        $this->smarty = Shop::Smarty();
-
+        $this->smarty = $smarty;
+        
         $this->initCookie();
     }
-
+    
     /**
      * singleton getter
      * 
      * @param Plugin $oPlugin
+     * @param JTLSmarty $smarty
      * @return pcfwlHelper
      */
-    public static function getInstance(Plugin $oPlugin)
+    public static function getInstance(Plugin $oPlugin, JTLSmarty $smarty)
     {
-        return (self::$_instance === null) ? new self($oPlugin) : self::$_instance;
+        return (self::$_instance === null) ? new self($oPlugin, $smarty) : self::$_instance;
     }
 
     /**
      * Initialize cookie and cookie settings
      * 
-     * @return pcfwlHelper
+     * @return pcfwlHelper $this
      */
     private function initCookie()
     {
@@ -100,34 +102,28 @@ class pcfwlHelper
                 $path = '/';
             }
 
-            if ($conf['global']['global_cookie_domain']) {
+            $domain = '';
+            if (!$domain && $conf['global']['global_cookie_domain']) {
                 $domain = $conf['global']['global_cookie_domain'];
             }
             if (!$domain && $cookieDefaults['domain']) {
                 $domain = $cookieDefaults['domain'];
             }
-            if (!$domain) {
-                $domain = '';
-            }
 
-            if ($conf['global']['global_cookie_secure']) {
-                $secure = $conf['global']['global_cookie_secure'] ? true : false;
+            $secure = false;
+            if (!$secure && $conf['global']['global_cookie_secure']) {
+                $secure = true;
             }
             if (!$secure && $cookieDefaults['secure']) {
-                $secure = $cookieDefaults['secure'] ? true : false;
+                $secure = true;
             }
-            if (!$secure) {
-                $secure = false;
-            }
-
-            if ($conf['global']['global_cookie_httponly']) {
+            
+            $httpOnly = false;
+            if (!$httpOnly && $conf['global']['global_cookie_httponly']) {
                 $httpOnly = $conf['global']['global_cookie_httponly'] ? true : false;
             }
             if (!$httpOnly && $cookieDefaults['httponly']) {
                 $httpOnly = $cookieDefaults['httponly'] ? true : false;
-            }
-            if (!$httpOnly) {
-                $httpOnly = false;
             }
 
             $lifetime = time() + $this->getCookieLifetime();
@@ -154,7 +150,7 @@ class pcfwlHelper
     /**
      * Write value into cookie
      * 
-     * @return pcfwlHelper
+     * @return pcfwlHelper $this
      */
     public function writeCookie($value = null)
     {
@@ -196,7 +192,7 @@ class pcfwlHelper
     /**
      * Get cookie lifetime in seconds. If global value is 0 it will use a 30days value from this class.
      *
-     * @return pcfwlHelper
+     * @return pcfwlHelper $this
      */
     public function getCookieLifetime()
     {
@@ -224,7 +220,7 @@ class pcfwlHelper
     /**
      * Assign values to smarty
      *
-     * @return pcfwlHelper
+     * @return pcfwlHelper $this
      */
     public function assignSmartyValues()
     {
@@ -271,8 +267,8 @@ class pcfwlHelper
     /**
      * Assign XML relevant values to smarty
      *
-     * @param string $exportCountry Default is "de"
-     * @return pcfwlHelper
+     * @param String $exportCountry Default is "de"
+     * @return pcfwlHelper $this
      */
     public function assignXmlSmartyValues($exportCountry = 'de')
     {
@@ -361,6 +357,11 @@ class pcfwlHelper
         return $this;
     }
 
+    /**
+     * Insert age meta tags
+     *
+     * @return pcfwlHelper $this
+     */
     public function insertMetaTags() {
         pq('head')
             ->prepend('<meta name="age-de-meta-label" content="age=' . $this->getConfig('min_age') . ' hash: ' . $this->getContentAgeHash() . ' v=1.0 kind=sl protocol=all" />')
@@ -368,16 +369,32 @@ class pcfwlHelper
 
         return $this;
     }
-    
+
+    /**
+     * Set content age header
+     *
+     * @return pcfwlHelper $this
+     */
     public function setContentAgeHeader() {
         header('X-content-age: "' . $this->getConfig('min_age') . '"');
         return $this;
     }
 
+    /**
+     * Set age hash header
+     *
+     * @return pcfwlHelper $this
+     */
     public function setAgeHashHeader() {
         header('X-age-hash: "' . $this->getContentAgeHash() . '"');
         return $this;
     }
+
+    /**
+     * Get age hash which is a md5 hash generated from SERVER_ADDR and plugin install date.
+     *
+     * @return String
+     */
     public function getContentAgeHash() {
         return md5(filter_input(INPUT_SERVER, 'SERVER_ADDR') . $this->plugin->dInstalliert);
     }
@@ -385,8 +402,8 @@ class pcfwlHelper
     /**
      * Fetch XML Template with smarty and return html code
      *
-     * @param string $xmlFile Which file to parse. We can give age.xml or age-de.xml and it will convert to age-xml,...
-     * @return string
+     * @param String $xmlFile Which file to parse. We can give age.xml or age-de.xml and it will convert to age-xml,...
+     * @return String XML file parsed from template
      */
     public function getXmlFromTpl($xmlFile)
     {
@@ -404,7 +421,7 @@ class pcfwlHelper
      * Get a language variable
      *
      * @param String $langVar
-     * @return void
+     * @return String
      */
     public function getLangVar($langVar)
     {
@@ -415,7 +432,7 @@ class pcfwlHelper
      * Get a config variable
      *
      * @param String $cfg
-     * @return void
+     * @return String
      */
     public function getConfig($cfg)
     {

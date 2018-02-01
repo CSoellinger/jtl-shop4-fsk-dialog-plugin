@@ -4,6 +4,9 @@
  *
  * @author PixelCrab <cs@pixelcrab.at>
  * @copyright 2016 PixelCrab
+ * 
+ * @global Plugin $oPlugin
+ * @global Exportformat  $exportformat
  */
 
 include_once 'inc/pcfwl_pre-export.php';

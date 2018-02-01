@@ -4,6 +4,9 @@
  *
  * @author PixelCrab <cs@pixelcrab.at>
  * @copyright 2016 PixelCrab
+ * 
+ * @global Plugin $oPlugin
+ * @global Exportformat  $exportformat
  */
 
 require_once PFAD_ROOT . PFAD_ADMIN . PFAD_INCLUDES . 'admininclude.php';

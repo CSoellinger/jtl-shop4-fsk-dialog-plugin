@@ -4,13 +4,14 @@
  *
  * @author PixelCrab <cs@pixelcrab.at>
  * @copyright 2016 PixelCrab
+ * 
  * @global JTLSmarty $smarty
  * @global Plugin $oPlugin
  */
 
 if (class_exists('Shop')) {
     require_once $oPlugin->cFrontendPfad . '../include/class.pcfwl.helper.php';
-    $pcfwlHelper = pcfwlHelper::getInstance($oPlugin);
+    $pcfwlHelper = pcfwlHelper::getInstance($oPlugin, $smarty);
 
     // Check if tFsk query string is set
     if (strtoupper(filter_input(INPUT_GET, 'acceptFsk', FILTER_SANITIZE_STRING)) === pcfwlHelper::COOKIE_VALUE_ACCEPT) {

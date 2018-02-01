@@ -4,19 +4,21 @@
  *
  * @author PixelCrab <cs@pixelcrab.at>
  * @copyright 2016 PixelCrab
+ * 
  * @global JTLSmarty $smarty
  * @global Plugin $oPlugin
  */
 
 if (class_exists('Shop')) {
     require_once $oPlugin->cFrontendPfad . '../include/class.pcfwl.helper.php';
-    $pcfwlHelper = pcfwlHelper::getInstance($oPlugin);
+    $pcfwlHelper = pcfwlHelper::getInstance($oPlugin, $smarty);
 
     // Insert meta tag if necessary
     if ($pcfwlHelper->getConfig('insert_meta') === 'on') {
         $pcfwlHelper->insertMetaTags();
     }
 
+    // Check if request is from a bot or from an user
     $session = Session::getInstance();
     $isBot   = isset($_SERVER['HTTP_USER_AGENT'])
         ? $session::getIsCrawler($_SERVER['HTTP_USER_AGENT'])

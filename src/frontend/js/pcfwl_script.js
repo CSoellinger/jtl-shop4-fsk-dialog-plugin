@@ -1,3 +1,12 @@
+/**
+ * This JavaScript handles the modal dialog and ajax submit if enabled.
+ * 
+ * @author PixelCrab <cs@pixelcrab.at>
+ * @copyright 2016 PixelCrab
+ * 
+ * @global jQuery|$
+ */
+
 jQuery(document).ready(function ($) {
 
   /**
