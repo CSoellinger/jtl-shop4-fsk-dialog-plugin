@@ -32,7 +32,7 @@ Gehen Sie auf der Github Seite auf "Releases" und laden Sie die letzte Version h
 
 ## Anleitung
 
-Sobald das Plugin installiert ist, ist es mit ein paar Standard Einstellungen bereits aktiv. Um diese zu anzupassen gehen Sie unter der Plugin Verwaltung auf das FSK Plugin.
+Sobald das Plugin installiert ist müssen Sie noch in den Einstellungen von diesem Plugin die benötigten Optionen aktivieren.
 
 ### Einstellungen
 
