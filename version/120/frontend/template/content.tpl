@@ -15,8 +15,8 @@
                     {$txt_fsk_pc_label_birthdate}
                 </div>
                 <div class="col-xs-12">
-                    <input name="day" type="number" placeholder="{$txt_fsk_pc_placeholder_day}" min="1" max="31" maxlength="2" style="width: 50px; text-align: center;" /> 
-                    <input name="month" type="number" placeholder="{$txt_fsk_pc_placeholder_month}" min="1" max="12" maxlength="2" style="width: 50px; text-align: center;" /> 
+                    <input name="day" type="number" placeholder="{$txt_fsk_pc_placeholder_day}" min="on" max="31" maxlength="2" style="width: 50px; text-align: center;" /> 
+                    <input name="month" type="number" placeholder="{$txt_fsk_pc_placeholder_month}" min="on" max="12" maxlength="2" style="width: 50px; text-align: center;" /> 
                     <input name="year" type="number" placeholder="{$txt_fsk_pc_placeholder_year}" min="1900" max="{$max_birthdate_year}" maxlength="4" style="width: 70px; text-align: center;" /> 
                 </div>
             </div>

@@ -187,8 +187,8 @@ class pluginHelper {
 
         $this->smarty->assign('min_age', $min_age);
         $this->smarty->assign('decline_url', $this->getConfig('decline_url'));
-        $this->smarty->assign('ajax_submit', ($this->getConfig('ajax_submit') === "1"));
-        $this->smarty->assign('check_birthdate', ($this->getConfig('check_birthdate') === "1"));
+        $this->smarty->assign('ajax_submit', ($this->getConfig('ajax_submit') === "on"));
+        $this->smarty->assign('check_birthdate', ($this->getConfig('check_birthdate') === "on"));
         $this->smarty->assign('max_birthdate_year', date('Y') - $min_age);
         
         $this->smarty->assign('COOKIE_VALUE_ACCEPT', self::COOKIE_VALUE_ACCEPT);
